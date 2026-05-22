@@ -104,11 +104,9 @@ class MemoryExtractor:
             value = self._clean_string(raw_memory.get(field))
             if not value:
                 continue
-            if field == "plan":
-                value = value.lower().replace("annual ", "").replace(" plan", "").strip()
-            elif field == "region":
+            if field == "region":
                 value = self._normalize_region(value)
-            elif field in {"issue", "intent", "environment", "status"}:
+            elif field in {"issue", "intent", "plan", "environment", "status"}:
                 value = value.lower().replace(" ", "_").replace("-", "_")
             normalized[field] = value
 
@@ -165,10 +163,6 @@ class MemoryExtractor:
         invoices = sorted({int(match) for match in re.findall(r"\binvoice\s*#?\s*(\d+)\b", lowered)})
         if invoices:
             memory["invoice_numbers"] = invoices
-
-        company_match = re.search(r"company name should be\s+([A-Za-z0-9][A-Za-z0-9 .&'-]+?)(?:\s+not\b|[.!?]?$)", combined, re.I)
-        if company_match:
-            memory["company_name"] = company_match.group(1).strip()
 
         if "oauth enabled" in lowered or "oauth is enabled" in lowered:
             memory["oauth_enabled"] = True

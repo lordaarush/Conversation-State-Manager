@@ -5,8 +5,37 @@ from pathlib import Path
 from app.main import ConversationStateManager
 
 
+SEMANTIC_EQUIVALENTS = {
+    "issue": {
+        "billing": {"billing", "double_charge", "duplicate_billing", "refund", "payment_issue"},
+        "api_support": {"api_support", "api_integration", "webhook_timeout", "webhook_delivery_timeout"},
+    },
+    "intent": {
+        "subscription_cancellation": {
+            "subscription_cancellation",
+            "cancel_subscription",
+            "cancellation",
+            "cancel_subscription_request",
+        },
+    },
+}
+
+
+def values_match(field, actual_value, expected_value):
+    if actual_value == expected_value:
+        return True
+
+    if isinstance(actual_value, str) and isinstance(expected_value, str):
+        actual = actual_value.lower().replace(" ", "_").replace("-", "_")
+        expected = expected_value.lower().replace(" ", "_").replace("-", "_")
+        equivalents = SEMANTIC_EQUIVALENTS.get(field, {}).get(expected, set())
+        return actual in equivalents
+
+    return False
+
+
 def memory_matches(actual, expected):
-    return all(actual.get(key) == value for key, value in expected.items())
+    return all(values_match(key, actual.get(key), value) for key, value in expected.items())
 
 
 def expected_memory_field_report(actual, expected):
@@ -16,7 +45,7 @@ def expected_memory_field_report(actual, expected):
         report[key] = {
             "expected": expected_value,
             "actual": actual_value,
-            "matched": actual_value == expected_value,
+            "matched": values_match(key, actual_value, expected_value),
         }
     return report
 

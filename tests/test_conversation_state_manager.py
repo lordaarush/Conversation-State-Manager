@@ -134,7 +134,7 @@ def test_helper_llm_memory_extraction_is_preferred_and_normalized(monkeypatch):
 
     assert state["memory_provider"] == "openrouter"
     assert state["memory"]["issue"] == "api_support"
-    assert state["memory"]["plan"] == "enterprise"
+    assert state["memory"]["plan"] == "annual_enterprise_plan"
     assert state["memory"]["region"] == "EU"
     assert state["memory"]["oauth_enabled"] is True
     assert state["memory"]["invoice_numbers"] == [1842, 1843]

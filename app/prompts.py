@@ -7,7 +7,7 @@ MEMORY_EXTRACTION_SYSTEM_PROMPT = (
     "plan/account tier, environment, region, authentication or configuration state, "
     "invoice IDs, company/workspace name corrections, unresolved status, user constraints, "
     "commitments, cancellation preferences, and other durable support facts. "
-    "Normalize values where obvious: EU region -> EU, annual enterprise plan -> enterprise, "
+    "Normalize values where obvious: EU region -> EU, "
     "invoice IDs as integers, booleans as true/false. "
     "Use this JSON shape and omit unknown fields: "
     "{\"issue\": string, \"intent\": string, \"plan\": string, \"environment\": string, "
