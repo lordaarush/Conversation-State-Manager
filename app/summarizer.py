@@ -2,8 +2,8 @@ import json
 import re
 from typing import Any, Dict, List, Optional, Tuple
 
-from openrouter_client import OpenRouterClient
-from prompts import SUMMARY_SYSTEM_PROMPT
+from app.openrouter_client import OpenRouterClient
+from app.prompts import SUMMARY_SYSTEM_PROMPT
 
 
 Message = Dict[str, str]

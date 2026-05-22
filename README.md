@@ -53,7 +53,7 @@ python demo.py --no-llm-summary --no-llm-memory
 ## Usage
 
 ```python
-from main import ConversationStateManager
+from app.main import ConversationStateManager
 
 manager = ConversationStateManager(token_threshold=12000, recent_window=6)
 state = manager.process_conversation(
@@ -90,11 +90,11 @@ Returned state:
 
 ## Code Structure
 
-- `main.py`: orchestration pipeline, token thresholding, topic tracking, recent-message retention
-- `memory_extractor.py`: helper-LLM memory extraction, JSON parsing, normalization, deterministic fallback
-- `summarizer.py`: helper-LLM summarization and fallback summary generation
-- `openrouter_client.py`: `.env` loading and OpenRouter API calls
-- `prompts.py`: helper LLM system prompts
+- `app/main.py`: orchestration pipeline, token thresholding, topic tracking, recent-message retention
+- `app/memory_extractor.py`: helper-LLM memory extraction, JSON parsing, normalization, deterministic fallback
+- `app/summarizer.py`: helper-LLM summarization and fallback summary generation
+- `app/openrouter_client.py`: `.env` loading and OpenRouter API calls
+- `app/prompts.py`: helper LLM system prompts
 - `demo.py`: human-readable evaluation runner
 - `tests/`: automated behavior checks
 

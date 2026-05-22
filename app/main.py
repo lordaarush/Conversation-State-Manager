@@ -4,9 +4,9 @@ import json
 from dataclasses import dataclass, field
 from typing import Any, Dict, Iterable, List, Optional
 
-from memory_extractor import MemoryExtractor
-from openrouter_client import DEFAULT_OPENROUTER_MODEL, OpenRouterClient
-from summarizer import ConversationSummarizer
+from app.memory_extractor import MemoryExtractor
+from app.openrouter_client import DEFAULT_OPENROUTER_MODEL, OpenRouterClient
+from app.summarizer import ConversationSummarizer
 
 
 Message = Dict[str, str]

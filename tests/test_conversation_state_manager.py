@@ -3,7 +3,7 @@ from pathlib import Path
 
 import pytest
 
-from main import ConversationStateManager, DEFAULT_OPENROUTER_MODEL
+from app.main import ConversationStateManager, DEFAULT_OPENROUTER_MODEL
 
 
 FIXTURE_PATH = Path(__file__).parent / "fixtures" / "test_conversations.json"

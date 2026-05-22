@@ -2,8 +2,8 @@ import json
 import re
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
-from openrouter_client import OpenRouterClient
-from prompts import MEMORY_EXTRACTION_SYSTEM_PROMPT
+from app.openrouter_client import OpenRouterClient
+from app.prompts import MEMORY_EXTRACTION_SYSTEM_PROMPT
 
 
 Message = Dict[str, str]

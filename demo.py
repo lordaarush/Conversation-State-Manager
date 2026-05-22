@@ -2,7 +2,7 @@ import argparse
 import json
 from pathlib import Path
 
-from main import ConversationStateManager
+from app.main import ConversationStateManager
 
 
 def memory_matches(actual, expected):
